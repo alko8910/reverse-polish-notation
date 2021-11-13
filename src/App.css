@@ -1,0 +1,43 @@
+:root {
+  --main-color:#4097fb;
+}
+
+body {
+  max-width: 600px;
+
+
+}
+
+h1 {
+  background-color: var(--main-color);
+  text-align: center;
+}
+
+.main-div {
+  text-align: center;
+
+}
+input{
+  width: 200px;
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+}
+input:focus {
+  outline: none;
+  border-radius: 3px;
+ 
+}
+
+button {
+  margin-left: 10px;
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  background-color: white;
+  color: var(--main-color);
+}
+.message {
+  color: red;
+ position: relative;
+ padding: 25px;
+
+}

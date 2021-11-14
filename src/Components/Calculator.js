@@ -5,7 +5,9 @@ import React, { useState } from 'react';
 function Calculator() {
 
     const [input, setInput] = useState([''])
-    const [message,setMessage] = useState('')
+    const [message,setMessage] = useState('');
+    const [color, setColor] = useState('white');
+    const [textColor, setTextColor]= useState('#4097fb')
     let stack = [];
     console.log(stack)
     let arr = [];
@@ -40,7 +42,10 @@ function Calculator() {
     
     console.log(stack.length)
     console.log(arr.length)
-
+if(arr.some(elem => !['+', '-','/','*','0','1','2','3','4','5','6','7','8','9','.'].includes(String(elem)))) {
+    setMessage('Only numbers and arithmetic operators are valid')
+    
+} else {
     if(stack.length * 2 === arr.length + 1){
         for(var j = 0; j < arr.length; j++) {
             if(arr[j] === "+" || arr[j] === '-' || arr[j] === '/' || arr[j] === '*' ){
@@ -66,7 +71,9 @@ function Calculator() {
                 
         }
         console.log(stack)
-       
+  
+        setColor('#4097fb');
+        setTextColor('white')
         setInput(`${input} = ${stack}`)
         setMessage('')
 
@@ -76,13 +83,15 @@ function Calculator() {
     } else {
         setMessage('Something went wrong! Check the number of operators!')
     }
-     
-   
+    }
+  
 }
 
     const clear = () => {
         setInput('');
-        setMessage('')
+        setMessage('');
+        setColor('white');
+        setTextColor('#4097fb');
     }
 
  return (
@@ -91,7 +100,7 @@ function Calculator() {
             <div>
                 <input value={input} onInput= { e => {setInput(e.target.value)}}></input>
                 <button onClick={clear}>Clear</button>
-                <button onClick={compute}>Compute</button>
+            <button onClick={compute} style={{background: color, color:textColor}}>Compute</button>
             </div>
             <div className='message'>
                 {message}

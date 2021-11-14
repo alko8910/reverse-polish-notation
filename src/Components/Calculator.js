@@ -18,6 +18,14 @@ function Calculator() {
             arr = input.toString().split(',');
         }
 
+
+
+        /*
+        for(var i = 0; i < arr.length; i++){
+            if ( typeof (arr[i] === 'number') || arr[i] == '/' || arr[i] == '*' || arr[i] == '+' || arr[i] == '-'){
+                
+            }
+        }*/
         
         
         
@@ -26,42 +34,55 @@ function Calculator() {
             // converts string to number and push to stack 
             stack.push(parseFloat(arr[i]));
             // remove NaN from stack
-            stack = stack.filter( value => !Number.isNaN(value) );
+            stack = stack.filter( value => !Number.isNaN(value));
          
     }
-    console.log(arr)
-    for(var j = 0; j < arr.length; j++) {
-        if(arr[j] === "+" || arr[j] === '-' || arr[j] === '/' || arr[j] === '*' ){
-            let b = stack.pop();
-            console.log(b);
-            let a = stack.pop();
-            console.log(a)
-            let oper = arr[j];
-            switch (oper) {
-                case '+':
-                    stack.push(b+a)
-                    break;
-                case '-':
-                    stack.push(b-a)
-                    break;
-                case '/':
-                    stack.push(b/a)
-                    break;
-                case '*':
-                    stack.push(b*a)
-                    break;
-                    default:
-            }
-            
-    }
     
-    } console.log(stack)
+    console.log(stack.length)
+    console.log(arr.length)
+
+    if(stack.length * 2 === arr.length + 1){
+        for(var j = 0; j < arr.length; j++) {
+            if(arr[j] === "+" || arr[j] === '-' || arr[j] === '/' || arr[j] === '*' ){
+                let b = stack.pop();
+                let a = stack.pop();
+             
+                let oper = arr[j];
+                switch (oper) {
+                    case '+':
+                        stack.push(b+a)
+                        break;
+                    case '-':
+                        stack.push(b-a)
+                        break;
+                    case '/':
+                        stack.push(b/a)
+                        break;
+                    case '*':
+                        stack.push(b*a)
+                        break;
+                        default:
+                }
+                
+        }
+        console.log(stack)
+       
+        setInput(`${input} = ${stack}`)
+        setMessage('')
+
+        }    
+    } else if(stack.length * 2 > arr.length + 1) {
+        setMessage('Something went wrong! Check the number of operands!')
+    } else {
+        setMessage('Something went wrong! Check the number of operators!')
+    }
+     
    
 }
 
     const clear = () => {
-       return setInput('');
-
+        setInput('');
+        setMessage('')
     }
 
  return (

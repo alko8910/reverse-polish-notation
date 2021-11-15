@@ -6,21 +6,26 @@ body {
   max-width: 600px;
 margin: auto;
 width: 50%;
-
+border: 1px solid #4097fb;
+border-radius: 5px;
+margin-top: 20px;
 
 }
 
 h1 {
   background-color: var(--main-color);
   text-align: center;
+  margin-top: 0;
 }
 
 .main-div {
   text-align: center;
 
 }
+
 input{
-  width: 200px;
+  max-width: 500px;
+  width: 300px;
   border: 1px solid var(--main-color);
   border-radius: 3px;
 }
@@ -42,4 +47,9 @@ button {
  position: relative;
  padding: 25px;
 
+}
+@media only screen and (max-width: 500px) {
+  input{
+    width: 200px;
+  }
 }
